@@ -167,3 +167,46 @@ class Foo{
 //静态方法bar调用了this.baz，这里的this指的是Foo类，
 //而不是Foo的实例，等同于调用Foo.baz
 //另外从这个理智还可以看出，静态方法可以与非静态方法重名。
+
+13. Class的静态属性和实例属性
+
+//静态属性指的是Class本身的属性，即Class.propName，
+//而不是定义在实例对象上的属性
+//
+//
+class Foo{}
+Foo.prop=1;
+//上面的写法为Foo类定义了一个静态属性prop
+
+14. new.target属性
+new是从构造函数生成实例对象的命令。
+ES6为new命令引入了一个 new.target属性，
+该属性一般用在构造函数之中。
+返回new命令作用于的那个构造函数。
+如果构造函数不是通过neq命令调用的，new.target返回undefined
+因此这个属性可以用来确定构造函数是怎么调用的。
+
+function Person(name){
+	if(new.target !== undefined){
+		this.name = name;
+	}else{
+		throw new Error('必须使用 new 命令 生成实例')
+	}
+}
+//另一种写法
+function Person(name){
+	if(new.target === Person){
+		this.name = name;
+	}else{
+		throw new Error("必须使用 new 命令 生成实例");
+	}
+}
+
+class Rectangle {
+	constructor(length, width) {
+		console.log(new.target === Rectangle);
+		this.length = length;
+		this.width = width;
+	}
+}
+var obj = new Rectangle(3,4); //输出true
