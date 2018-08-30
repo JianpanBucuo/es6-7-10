@@ -105,3 +105,65 @@ person.sayName(); //Nic
 它默认指向类的实例。
 但是必须非常小心，
 一旦单独使用，很可能报错。
+
+//与es5一样，在类的内部可以使用get和set关键字
+//对某个属性设置寸值函数和取值函数
+class MyClass{
+	constructor(){}
+	get prop(){
+		return "getter";
+	}
+	set prop(value){
+		console.log("setter"+ value);
+	}
+}
+
+//存值函数和取值函数是设置在华苏醒的Desscriptor对象上的
+
+class CustomHTMLElement {
+	constructor (element) {
+		this.element = element;
+	}
+	get HTML() {
+		return this.element.innerHTML;
+	}
+	set HTML(value){
+		this.element.innerHTML = value;
+	}
+}
+
+//11. Class的Generator方法
+?
+
+//12.  Class的静态方法
+类相当于实例的原型，所有在类中定义的方法，都会被实例继承
+如果在一个方法前，加上static关键字，就表示该方法不会被实例继承，
+而是直接通过类来调用，这就称为 “静态方法”
+
+class Foo {
+	static classMethod(){
+		return "hello";
+	}
+}
+Foo.classMethod(); //"hello"
+
+var foo = new Foo();
+foo.classMethod(); // "error"
+
+//注意，如果静态方法包含this关键字，这个this指的是类，
+//而不是实例。
+
+class Foo{
+	static bar () {
+		this.baz();
+	}
+    static baz () {
+    	console.log("hello");
+    }
+    baz () {
+    	console.log("world");
+    }
+}
+//静态方法bar调用了this.baz，这里的this指的是Foo类，
+//而不是Foo的实例，等同于调用Foo.baz
+//另外从这个理智还可以看出，静态方法可以与非静态方法重名。
