@@ -96,3 +96,53 @@ Promise 对象有两个特点
     ()=>{console.log("this is success callback");},
     ()=>{console.log("this is fall callback")}
  	)
+
+ const promise = new Promise(function(resolve,reject){
+ 	if() {
+ 		resolve(val);
+ 	}else{
+ 		reject(err);
+ 	}
+ })
+
+ function timeout (ms) {
+ 	return new Promise ((resolve, reject) => {
+ 		setTimeout(resolve,ms,"done");
+ 	})
+ }
+ timeout(100).then((value)=>{
+ 	console.log(value);
+ })
+
+ //promise新建后就会立即执行
+ let promise = new Promise (function(resolve,reject){
+ 	console.log("promise");
+ 	resolve();
+ })
+ promise.then(function(){
+ 	console.log("resolved");
+ })
+ console.log("Hi");
+
+ //异步加载图片
+ function loadImageAsync(url) {
+ 	return new Promise (function (resolve, reject) {
+ 		const img = new Image();
+ 		img.onload=function(){
+ 			resolve(img);
+ 		};
+ 		img.onerror=function(){
+ 			reject(new Error("Could not load img at "+url));
+ 		}
+ 		img.src=url;
+ 	})
+ }
+
+
+ const getJSON = function (url) {
+ 	const promise = new Promise (function(resolve,reject){
+ 		const handler = function ()　{
+ 			if(this.)
+ 		}
+ 	})
+ }

@@ -17,6 +17,7 @@ fetch("https://www.baidu.com/search/error.html?a=1&b=2")
  }).then((res)=>{
  	console.log(res);
  })
+ 
 http://172.18.168.110:9002/v1/sku/image?skuIdList=303780
  //GET请求中如果需要传递参数怎么办，
  //只能把参数写在URL上来进行传递了
