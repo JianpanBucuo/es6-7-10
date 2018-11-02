@@ -54,3 +54,76 @@ promise.then(()=>{
 	console.log("resolved");
 })
 console.log("Hi");
+
+
+function want () {
+	console.log("It's you want");
+}
+
+// function fn
+// 数据请求和数据处理区分开来
+
+function want ( ) {
+	console.log("It's you want" );
+}
+function fn (want) {
+	want && want();
+}
+
+function fn (want) {
+	console.log("Amout of code");
+	return new Promise ( function (resolve, reject) {
+		  if (typeof want === "function"){
+		  	resolve(want);
+		  }
+		  else {
+		  	reject("it's not a function");
+		  }
+	} )
+}
+
+new Promise (function (resolve, reject) {
+	if(true) {
+		resolve();
+	}
+		else {
+			resject();
+		}
+})
+
+function fn ( num ) {
+	return new Promise ((resolve,reject) => {
+		if ( typeof num === "number") {
+			resolve();
+		}else{
+			reject();
+		}
+	}).then(() => {
+		console.log("It's number");
+	}, () => {
+		console.log("It's not a number");
+	})
+}
+
+var fn = (num) => {
+   return new Promise((resolve,reject) => {
+   	if (typeof num === "number"){
+   		resolve(num);
+   	}else	{
+   		reject(num);
+   	}
+   })
+}
+fn("aaa").then((num)=>{ console.log(num + 1); },() =>{console.log("It's not a number")})
+
+
+var url = 'https://hq.tigerbrokers.com/fundamental/finance_calendar/getType/2017-02-26/2017-06-10';
+var url1 = 'https://hq.tigerbrokers.com/fundamental/finance_calendar/getType/2017-03-26/2017-06-10';
+
+ function renderAll () {
+ 	return Promise.all([getJSON(url),getJSON(url1)]);
+ }
+
+ renderAll().then(function (value) {
+ 	console.log(value);
+ })

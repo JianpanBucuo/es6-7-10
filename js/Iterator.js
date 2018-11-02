@@ -72,3 +72,27 @@ function *createIterator () {
 	yield 2;
 	yield 3;
 }
+
+function *createIterator (items) {
+     for ( let i = 0; i<items.length; i++ ){
+     	yield  items[i];
+     }
+}
+
+let createIterator =  function *(items) {
+	for (let i = 0; items.length; i++ ){
+		yield [i];
+	}
+}
+
+let o = {
+		  *createIterator   (items) {
+			for ( let i =0 ; i< items.length ; i++) {
+				yield items[i];
+			}
+		}
+}
+
+function isIterable (Object) {
+	return typeof Object[Symbol.iterator]  === "function";
+}
