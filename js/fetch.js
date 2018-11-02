@@ -112,3 +112,21 @@ set: 为给定的参数设置value，如果给参数不存在则创建并设置�
 sort：按key对所有的参数进行排序，并返回undefined，如果存在相同的key，则保留它们原来的顺序。
 toString：返回在适合在url中使用的字符串
 values：返回一个iterator遍历可得到所有的value值
+
+
+new SearchParams()[["foo",1],["bar",2]]
+
+function obj2String (obj, arr = [], idx = 0) {
+	for (let item in obj) {
+		arr[idx++] = [item,obj[item]]
+	}
+	return new URLSearchParams(arr).toString();
+}
+
+function commonFetch (url,options,method = "GET") {
+	const searchStr = obj2String(options);
+	let initObj = {};
+	if( method == "GET") {
+		url = url +"?" + searchStr;
+	}
+}
