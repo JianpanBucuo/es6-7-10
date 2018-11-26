@@ -127,3 +127,7 @@ var url1 = 'https://hq.tigerbrokers.com/fundamental/finance_calendar/getType/201
  renderAll().then(function (value) {
  	console.log(value);
  })
+
+ promise.all,promise.race 都是以一个promise对象组成的数组作为参数，
+ 不同的是 只要数组中的其中一个promise状态改变的时候，就可以调用 ( .then ) 方法了
+  
