@@ -34,3 +34,22 @@ msg = ` Hello ${ ` My name is ${ name } ` } `
 let msg = tag'Hello world';
   // 模板字面量 Hello world 的模板标签式 tag
    
+//它可以紧跟在一个函数名后面，该函数被调用来处理这个模板字符串。
+
+//标签模板其实不是模板，而是函数调用的一种特殊形式，
+// 标签 指的就是函数，紧跟在后面的模板字符串就是它的参数
+// 如果模板字符串里有变量，就不是简单的调用了，而是会将模板字符串先处理成多个参数，在调用函数。
+let a = 5;
+let b = 10;
+
+tag`Hello ${ a + b } world ${ a * b }`;
+tag(["Hello ", " world", "" ], 15, 20);
+function tag( stringArr, ...values ) {
+	console.log(stringArr);
+	console.log(values);
+} 
+function  tag2 (stringArr, value1, value2) {
+	console.log(stringArr);
+	console.log(value1);
+	console.log(value2);
+}
