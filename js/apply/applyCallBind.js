@@ -48,3 +48,8 @@ var xh={
 // 而apply的第二个从那书是一个数组，
 // 数组中的元素和say方法中一一对应的
 // bind的传参方法和call一样
+
+// bind方法用于绑定作用域
+//当把函数赋值给另一个变量的时候并不会 把 作用域绑定到一起， 需要使用 bind 将函数和作用域绑定到一起
+var a = document.write;
+a.bind(document)('write');
